@@ -1,0 +1,73 @@
+<div class="player" *ngFor="let p of part; index as i">
+    <div class="wrap">
+        <div class="base">
+            <div class="avatar">
+                <img class="avatarIcon" src={{getAvatarImg(p.championId)}}>
+            </div>
+            <div class="spell">
+                <div class="sum">
+                    <img class="spellIcon" src={{getSpellImg(p.spell1Id)}}>
+                    <img class="spellIcon" src={{getSpellImg(p.spell2Id)}}>
+                </div>
+                <div class="sum">
+                    <img class="spellIcon" src={{getRunesImg(p.stats.perk0)}}>
+                    <img class="spellIcon small" src={{getRunesImg(p.stats.perkSubStyle)}}>
+                </div>
+            </div>
+            <div class="name">
+                {{partId[i].player.summonerName}}
+            </div>
+        </div>
+        <div class="score">
+            <div class="stat">
+                {{p.stats.kills}} / {{p.stats.deaths}} / {{p.stats.assists}}
+            </div>
+            <div class="stat">
+            <span [ngClass]="{positive: getKda(p.stats.kills, p.stats.deaths, p.stats.assists) > 3.5,
+                              negative: getKda(p.stats.kills, p.stats.deaths, p.stats.assists) <= 2}">
+                {{getKda(p.stats.kills, p.stats.deaths, p.stats.assists) |  number: '1.1-2'}}
+            </span> <span class="transparent">KDA</span>
+            </div>
+        </div>
+        <div class="score">
+            <div class="stat">
+                <span [ngClass]="{positive: getKp(p.stats.kills, p.stats.assists) > 0.52,
+                    negative: getKp(p.stats.kills, p.stats.assists) <= 0.46}">
+                {{getKp(p.stats.kills, p.stats.assists) | percent: '1.0-1'}} 
+            </span> <span class="transparent">KP</span>
+            </div>
+            <div class="stat">
+                {{p.stats.totalMinionsKilled}} <span class="transparent">CS</span>
+            </div>
+        </div>
+        <div class="score">
+            <div class="stat left">
+                {{p.stats.totalDamageDealtToChampions}}
+            </div>
+            <div class="dmg">
+                <mat-progress-bar value={{getDamage(p.stats.totalDamageDealtToChampions)}}></mat-progress-bar>
+            </div>
+        </div>
+        <div class="build">
+            <div class="item">
+                <img class="itemIcon" src={{getItemImg(p.stats.item0)}}>
+            </div>
+            <div class="item">
+                <img class="itemIcon" src={{getItemImg(p.stats.item1)}}>
+            </div>
+            <div class="item">
+                <img class="itemIcon" src={{getItemImg(p.stats.item2)}}>
+            </div>
+            <div class="item">
+                <img class="itemIcon" src={{getItemImg(p.stats.item3)}}>
+            </div>
+            <div class="item">
+                <img class="itemIcon" src={{getItemImg(p.stats.item4)}}>
+            </div>
+            <div class="item">
+                <img class="itemIcon" src={{getItemImg(p.stats.item5)}}>
+            </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</div>

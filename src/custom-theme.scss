@@ -12,15 +12,15 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$ritopls-primary: mat-palette($mat-indigo);
-$ritopls-accent: mat-palette($mat-pink, A200, A100, A400);
+$ritopls-primary: mat-palette($mat-cyan, 800);
+$ritopls-accent: mat-palette($mat-orange, 200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $ritopls-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$ritopls-theme: mat-light-theme((
+$ritopls-theme: mat-dark-theme((
   color: (
     primary: $ritopls-primary,
     accent: $ritopls-accent,

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="team">
+            <h1 class="name">Blue team</h1>
+            <app-squad [part]='getTeamParticipant(100)' 
+                       [partId]='getTeamId(100)' 
+                       [summonerSpell]='summonerSpell'
+                       [runes]='runes'></app-squad>
+        </div>
+        <div class="team">
+            <h1 class="name">Red Team</h1>
+            <app-squad [part]='getTeamParticipant(200)' 
+                       [partId]='getTeamId(200)' 
+                       [summonerSpell]='summonerSpell' 
+                       [runes]='runes'></app-squad>
+        </div>
+    </div>
+</div>

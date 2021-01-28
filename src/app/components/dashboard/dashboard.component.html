@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="summoner">
+            <div class="emblem" *ngIf="!isLoading;else loading">
+                <div class="border">
+                    <img src={{emblem.border}} class="imgBorder">
+                </div>
+                <div class="icon">
+                    <img src={{emblem.icon}} class="imgIcon">
+                </div>
+                <div class="level">
+                    <p>{{emblem.level}}</p>
+                </div>
+            </div>
+            <div class="stats" *ngIf="!isLoading">
+                <div class="name">
+                    <p>{{summoner?.name}} <span class="transparent">#EUW</span></p>
+                    <mat-divider></mat-divider>
+                </div>
+
+                <div class="league">
+                    <div class="rank">
+                        <div class="queue">
+                            <p>Solo</p>
+                        </div>
+                        <div class="tier">
+                            <div class="wrap">
+                                <img class="imgTier" src={{leagueInfo?.image}}>
+                            </div>
+                            <div class="text">
+                                <div class="title">
+                                    <p>{{leagueInfo?.tier | titlecase}} {{leagueInfo?.division}}</p>
+                                </div>
+                                <div class="rating">
+                                    <div class="rate">
+                                        <p>Win rate: {{leagueInfo?.rate[2] | percent: '1.0-1'}}</p>
+                                    </div>
+                                    <div class="graph">
+                                        <div class="winlose">
+                                            <div class="wins">
+                                                {{leagueInfo?.rate[0]}}
+                                            </div>
+                                            <div class="losses">
+                                                {{leagueInfo?.rate[1]}}
+                                            </div>
+                                        </div>
+                                        <div class="bar">
+                                            <mat-progress-bar value='{{leagueInfo?.rate[2] * 100}}'></mat-progress-bar>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rank">
+                        <div class="queue">
+                            <p>Flex</p>
+                        </div>
+                        <div class="tier">
+                            <div class="wrap">
+                                <img class="imgTier" src={{leagueInfo?.image2}}>
+                            </div>
+                            <div class="text">
+                                <div class="title">
+                                    <p>{{leagueInfo?.tier2 | titlecase}} {{leagueInfo?.division2}}</p>
+                                </div>
+                                <div class="rating">
+                                    <div class="rate">
+                                        <p>Win rate: {{leagueInfo?.rate2[2] | percent: '1.0-1'}}</p>
+                                    </div>
+                                    <div class="graph">
+                                        <div class="winlose">
+                                            <div class="wins">
+                                                {{leagueInfo?.rate2[0]}}
+                                            </div>
+                                            <div class="losses">
+                                                {{leagueInfo?.rate2[1]}}
+                                            </div>
+                                        </div>
+                                        <div class="bar">
+                                            <mat-progress-bar value='{{leagueInfo?.rate2[2] * 100}}'></mat-progress-bar>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #loading>
+                <div class="spinner">
+                    <mat-spinner></mat-spinner>
+                </div>
+           </ng-template>
+        </div>
+        <div class="matchList">
+            <app-match-list *ngIf='completed' [region]='region' [summoner]='summoner'></app-match-list>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,165 @@
+.container{
+    margin-top: 50px;
+    width: 100%;
+}
+
+.page{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.paginator{
+    width: 100%;
+    background: transparent;
+}
+
+.win .mat-expansion-panel{
+    background: linear-gradient(11deg, rgba(13,80,90,1) 0%, rgba(20,53,61,1) 10%, rgba(25,31,39,1) 25%);
+}
+
+.lost .mat-expansion-panel{
+    background: linear-gradient(11deg, rgba(186,107,108,1) 0%, rgba(104,68,73,1) 10%, rgba(25,31,39,1) 25%);
+}
+
+.mat-expansion-panel-header{
+    height: 150px;
+}
+
+.mat-expansion-panel-spacing{
+    margin: 30px 0;
+}
+
+.match{
+    margin-top: 10px;
+}
+
+.panel-header{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+    margin-top: 25px;
+}
+
+.title{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.data{
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.base{
+    display: flex;
+    justify-content: center;
+}
+
+.avatar{
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.spell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sum{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.build{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100px;
+}
+
+.stat{
+    margin: 2px 0;
+}
+
+.achieved{
+    margin-top: 20px;
+    justify-self: flex-end;
+}
+
+.achievment{
+    display: block;
+    width: 60px;
+    text-align: center;
+    font-size: 10px;
+    background: #00838f;
+    border-radius: 100px;
+}
+
+
+.icon{
+    width: 50px;
+    border-radius: 100%;
+    border: 2px solid #ffcc80;
+}
+
+.sumIcon{
+    width: 20px;
+    margin: 3px;
+}
+
+.small{
+    width: 15px;
+}
+
+.spinner{
+    display: flex;
+    margin-top: 60px;
+    justify-content: center;
+}
+
+.itemIcon{
+    width: 25px;
+}
+
+.item{
+    width: 25px;
+    height: 25px;
+    background-color:  #0d1014;
+    border: 0.5px solid  #ffcc80;
+    margin: 2px;
+}
+
+.content{
+    margin: 20px;
+    margin-top: 50px;
+}
+
+.positive{
+    color: #81c784;
+}
+
+.negative{
+    color: #e57373;
+}
+
+.transparent{
+    opacity: 0.4;
+    font-style: italic;
+}

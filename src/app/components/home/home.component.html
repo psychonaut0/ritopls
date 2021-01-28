@@ -1,0 +1,43 @@
+ 
+<div class="container">
+    <Particles class="particles" id="tsparticles" [options]="particlesOptions"></Particles>
+    <div class="wrapper">
+        <div class="image">
+            <div *ngIf="!isLoading; else loading">
+                <img class='logo' src="assets/logo.svg">
+            </div>
+            <ng-template #loading>
+                <div class="spinner">
+                <mat-progress-spinner
+                    class="example-margin"
+                    color="primary"
+                    mode="indeterminate">
+                </mat-progress-spinner>
+            </div>
+            </ng-template>
+        
+        </div>
+        
+        <form class="form">
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Summoner Name</mat-label>
+                <input matInput type="text" [(ngModel)]="name" name="name">
+                <mat-select class="region" [(value)]="selected" [(ngModel)]="region" name="region">
+                    <mat-option value="br1">BR</mat-option>
+                    <mat-option value="eun1">EUNE</mat-option>
+                    <mat-option value="euw1">EUW</mat-option>
+                    <mat-option value="jp1">JP</mat-option>
+                    <mat-option value="kr">KR</mat-option>
+                    <mat-option value="la1">LAN</mat-option>
+                    <mat-option value="la2">LAS</mat-option>
+                    <mat-option value="na1">NA</mat-option>
+                    <mat-option value="oc1">OCE</mat-option>
+                    <mat-option value="tr1">TR</mat-option>
+                    <mat-option value="ru">RU</mat-option>
+                </mat-select> 
+            </mat-form-field>
+            <button class="submit" (click)="getSummoner()" type="submit" mat-raised-button color="accent">Search</button>
+        </form>
+        
+    </div>
+</div>
