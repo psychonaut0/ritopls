@@ -3,7 +3,9 @@ import { RiotapiService } from '../../services/riotapi.service';
 import { DatadragonService } from '../../services/datadragon.service';
 import { take } from 'rxjs/operators';
 import { Summoner, League } from '../../models/summoner';
-import { forkJoin } from 'rxjs';
+import { Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +14,9 @@ import { forkJoin } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private riot: RiotapiService,
-              private ddragon: DatadragonService) { }
+  constructor(public riot: RiotapiService,
+              private ddragon: DatadragonService,
+              private dialog: MatDialog) { }
 
 
   // TEMP
@@ -96,15 +99,21 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
-  ngOnInit(): void {
+  getApi(region, summoner): void{
+    console.log(region + summoner);
     this.isLoading = true;
-    this.region = 'euw1';
-    this.summoner = this.riot.summoner;
+    this.region = region;
+    this.summoner = summoner;
     this.ddragon.getVersion().pipe(take(1), ).subscribe(
           data => {
             this.getEmblem(this.summoner, data[0]);
             this.ddragon.version = data[0];
+          },
+          err => {
+            this.isLoading = false;
+            this.dialog.open(DialogComponent, {
+              data: err
+          });
           }
         );
     this.riot.getLeague(this.summoner.id, 'euw1') .pipe(take(1), ).subscribe(
@@ -113,7 +122,10 @@ export class DashboardComponent implements OnInit {
             console.log(data);
           },
           err => {
-
+          this.isLoading = false;
+          this.dialog.open(DialogComponent, {
+              data: err
+          });
           },
           () => {
             this.getLeagueInfo(this.league);
@@ -121,6 +133,12 @@ export class DashboardComponent implements OnInit {
             this.completed = true;
           }
     );
+
+  }
+
+
+  ngOnInit(): void {
+    this.getApi('euw1', this.riot.summoner);
   }
 
 }

@@ -6,6 +6,8 @@ import { combineAll, take } from 'rxjs/operators';
 import { Matches, Summoner, Spell, Queue, Runes } from '../../models/summoner';
 import { Match } from '../../models/match-details';
 import { forkJoin, Observable } from 'rxjs';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-match-list',
@@ -14,8 +16,9 @@ import { forkJoin, Observable } from 'rxjs';
 })
 export class MatchListComponent implements OnInit {
 
-  constructor(private riot: RiotapiService,
-              private ddragon: DatadragonService) { }
+  constructor(public riot: RiotapiService,
+              private ddragon: DatadragonService,
+              private dialog: MatDialog) { }
 
   // Input from dashboard component
   @Input() region: string;
@@ -164,6 +167,10 @@ export class MatchListComponent implements OnInit {
           },
           err => {
             console.error(err);
+            this.isLoading = false;
+            this.dialog.open(DialogComponent, {
+              data: err
+          });
           },
           () => {
             forkJoin({
@@ -179,6 +186,10 @@ export class MatchListComponent implements OnInit {
               },
               err => {
                 console.error(err);
+                this.isLoading = false;
+                this.dialog.open(DialogComponent, {
+                  data: err
+              });
               },
               () => {
                 this.isLoading = false;

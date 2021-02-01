@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="image">
+            <a routerLink="/home">
+                <img class="logo" src="assets/logo.svg">
+            </a>
+        </div>
+        <form class="form">
+            <mat-form-field appearance="outline" class="field">
+                <mat-label>Summoner Name</mat-label>
+                    <input matInput type="text" [(ngModel)]="name" name="name">
+                    <mat-select class="region"  [(ngModel)]="region" name="region" required>
+                        <mat-option value="br1">BR</mat-option>
+                        <mat-option value="eun1">EUNE</mat-option>
+                        <mat-option value="euw1">EUW</mat-option>
+                        <mat-option value="jp1">JP</mat-option>
+                        <mat-option value="kr">KR</mat-option>
+                        <mat-option value="la1">LAN</mat-option>
+                        <mat-option value="la2">LAS</mat-option>
+                        <mat-option value="na1">NA</mat-option>
+                        <mat-option value="oc1">OCE</mat-option>
+                        <mat-option value="tr1">TR</mat-option>
+                        <mat-option value="ru">RU</mat-option>
+                    </mat-select> 
+            </mat-form-field>
+            <div class="submit">
+                <button type="submit" mat-raised-button color="primary" (click)="getSummoner()">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="image end">
+        <a href="https://github.com/kekko0002/ritopls" target="blank">
+            <img class="logo" src="assets/github.svg">
+        </a>
+    </div>
+</div>

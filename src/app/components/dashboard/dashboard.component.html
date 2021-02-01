@@ -1,7 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="riot.isShown">
+    <app-search></app-search>
+    <div class="bg">
+        
+    </div>
     <div class="wrapper">
         <div class="summoner">
-            <div class="emblem" *ngIf="!isLoading;else loading">
+            <div class="emblem" *ngIf="!isLoading; else loading">
                 <div class="border">
                     <img src={{emblem.border}} class="imgBorder">
                 </div>
@@ -93,8 +97,8 @@
                 </div>
            </ng-template>
         </div>
-        <div class="matchList">
-            <app-match-list *ngIf='completed' [region]='region' [summoner]='summoner'></app-match-list>
+        <div class="matchList" *ngIf="completed">
+            <app-match-list *ngIf='riot.isShown' [region]='region' [summoner]='summoner'></app-match-list>
         </div>
         
     </div>

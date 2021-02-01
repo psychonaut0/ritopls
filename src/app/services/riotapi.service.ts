@@ -11,15 +11,25 @@ import { Match } from '../models/match-details';
 })
 export class RiotapiService {
 
-  private apiKey = 'RGAPI-c9d78456-29a2-486f-bffb-07707acd4afc';
+  private apiKey = 'RGAPI-c8c31dfc-fd96-4be5-9d02-d15305b4dd91';
   private urlHeader = 'https://';
   private urlCore = '.api.riotgames.com/';
   private params = new HttpParams().set('api_key', this.apiKey);
 
   summoner: Summoner;
   region: string;
+  isLoading = false;
+  isShown = true;
 
   constructor(private http: HttpClient) { }
+
+  // tslint:disable-next-line: typedef
+  reInit() {
+    this.isShown = false;
+    setTimeout(() => {
+      this.isShown = true;
+    });
+  }
 
   getSummonerByName(name: string, region: string): Observable<Summoner>{
     const reqType = 'lol/summoner/v4/summoners/by-name/';

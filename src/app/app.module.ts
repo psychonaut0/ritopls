@@ -9,8 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatchDetailsComponent } from './components/match-details/match-details.component';
-import { ChampionDetailsComponent } from './components/champion-details/champion-details.component';
 import { MatchListComponent } from './components/match-list/match-list.component';
+import { SquadComponent } from './components/match-details/squad/squad.component';
+import { SearchComponent } from './components/search/search.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,7 +24,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { SquadComponent } from './components/match-details/squad/squad.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 
 
@@ -33,9 +35,10 @@ import { SquadComponent } from './components/match-details/squad/squad.component
     HomeComponent,
     DashboardComponent,
     MatchDetailsComponent,
-    ChampionDetailsComponent,
     MatchListComponent,
-    SquadComponent
+    SquadComponent,
+    SearchComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { SquadComponent } from './components/match-details/squad/squad.component
     MatProgressBarModule,
     MatDividerModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

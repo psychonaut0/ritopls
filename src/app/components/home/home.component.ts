@@ -3,6 +3,8 @@ import { RiotapiService } from '../../services/riotapi.service';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import {Router} from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,8 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private riot: RiotapiService,
-              private router: Router) { }
+              private router: Router,
+              private dialog: MatDialog) { }
 
   selected = 'euw1';
   name: string;
@@ -30,11 +33,13 @@ export class HomeComponent implements OnInit {
       },
       err => {
         this.isLoading = false;
-        console.error(err);
+        this.dialog.open(DialogComponent, {
+            data: err
+        });
       },
       () => {
         this.isLoading = false;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard', this.name]);
       }
 
     );
