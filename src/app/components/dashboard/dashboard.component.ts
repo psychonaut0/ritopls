@@ -55,6 +55,7 @@ export class DashboardComponent implements OnInit {
 
   isLoading = false;
   completed = false;
+  checked = false;
 
   getEmblem(sum: Summoner, version: string): void{
     this.emblem.level = sum.summonerLevel;
@@ -99,6 +100,27 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  saveUser(sum: Summoner): void{
+    const id = sum.name;
+    localStorage.setItem(id, JSON.stringify(sum));
+    this.checked = true;
+    console.log(this.checked);
+  }
+
+  removeUser(sum: Summoner): void{
+    localStorage.removeItem(sum.name);
+    this.checked = false;
+  }
+
+  checkUser(sum: Summoner): void{
+    if (sum.name in localStorage){
+      this.checked = true;
+    }
+    else{
+      this.checked = false;
+    }
+  }
+
   getApi(region, summoner): void{
     console.log(region + summoner);
     this.isLoading = true;
@@ -116,7 +138,7 @@ export class DashboardComponent implements OnInit {
           });
           }
         );
-    this.riot.getLeague(this.summoner.id, 'euw1') .pipe(take(1), ).subscribe(
+    this.riot.getLeague(this.summoner.id, this.region) .pipe(take(1), ).subscribe(
           data => {
             this.league = data;
             console.log(data);
@@ -129,6 +151,7 @@ export class DashboardComponent implements OnInit {
           },
           () => {
             this.getLeagueInfo(this.league);
+            this.checkUser(this.summoner);
             this.isLoading = false;
             this.completed = true;
           }
@@ -138,7 +161,7 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getApi('euw1', this.riot.summoner);
+    this.getApi(this.riot.region, this.riot.summoner);
   }
 
 }

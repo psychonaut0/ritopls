@@ -36,7 +36,21 @@
                     <mat-option value="ru">RU</mat-option>
                 </mat-select> 
             </mat-form-field>
-            <button class="submit" (click)="getSummoner()" type="submit" mat-raised-button color="accent">Search</button>
+            <div class="button">
+                <button class="submit" mat-raised-button [matMenuTriggerFor]="menu" color="primary" *ngIf="getLocalstorage().length">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                    <span class="center">Saved Summoner</span>
+                    
+                </button>
+                <mat-menu #menu="matMenu">
+                <button mat-menu-item *ngFor="let item of getLocalstorage()" (click)="getSummonerSaved(item)">
+                    {{item}}
+                </button>
+                </mat-menu>
+                <button class="submit" (click)="getSummoner(name, region)" type="submit" mat-raised-button color="accent">Search</button>
+                
+            </div>
+            
         </form>
         
     </div>

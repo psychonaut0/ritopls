@@ -169,3 +169,14 @@
     background-image: url(src/assets/bg.png);
 }
 
+.sumName{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.star{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+

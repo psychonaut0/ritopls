@@ -1,8 +1,6 @@
 <div class="container" *ngIf="riot.isShown">
     <app-search></app-search>
-    <div class="bg">
-        
-    </div>
+    <div class="bg"></div>
     <div class="wrapper">
         <div class="summoner">
             <div class="emblem" *ngIf="!isLoading; else loading">
@@ -18,7 +16,17 @@
             </div>
             <div class="stats" *ngIf="!isLoading">
                 <div class="name">
-                    <p>{{summoner?.name}} <span class="transparent">#EUW</span></p>
+                    <div class="sumName">
+                        <p>{{summoner?.name}} <span class="transparent">#EUW</span></p>
+                        <button class="star" mat-icon-button (click)="saveUser(summoner)" *ngIf="!checked; else check">
+                            <mat-icon>star_border</mat-icon>
+                        </button>
+                        <ng-template #check>
+                            <button class="star" mat-icon-button (click)="removeUser(summoner)" >
+                                <mat-icon>star</mat-icon>
+                            </button>
+                        </ng-template>
+                    </div>
                     <mat-divider></mat-divider>
                 </div>
 

@@ -11,7 +11,7 @@ import { Match } from '../models/match-details';
 })
 export class RiotapiService {
 
-  private apiKey = 'RGAPI-c8c31dfc-fd96-4be5-9d02-d15305b4dd91';
+  private apiKey = 'RGAPI-7f2655c9-6f6b-4023-ba4b-6be698e698f6';
   private urlHeader = 'https://';
   private urlCore = '.api.riotgames.com/';
   private params = new HttpParams().set('api_key', this.apiKey);

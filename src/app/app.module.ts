@@ -12,6 +12,8 @@ import { MatchDetailsComponent } from './components/match-details/match-details.
 import { MatchListComponent } from './components/match-list/match-list.component';
 import { SquadComponent } from './components/match-details/squad/squad.component';
 import { SearchComponent } from './components/search/search.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,7 +27,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
-import { DialogComponent } from './components/dialog/dialog.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -38,7 +40,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatchListComponent,
     SquadComponent,
     SearchComponent,
-    DialogComponent
+    DialogComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatDividerModule,
     MatExpansionModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

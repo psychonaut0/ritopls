@@ -23,13 +23,14 @@ export class HomeComponent implements OnInit {
   name: string;
   region = 'euw1';
   isLoading = false;
+  storage;
 
-  getSummoner(): void{
+  getSummoner(name, region): void{
     this.isLoading = true;
-    this.riot.getSummonerByName(this.name, this.region).pipe(take(1), ).subscribe(
+    this.riot.getSummonerByName(name, region).pipe(take(1), ).subscribe(
       data => {
         this.riot.summoner = data;
-        this.riot.region = this.region;
+        this.riot.region = region;
       },
       err => {
         this.isLoading = false;
@@ -39,10 +40,21 @@ export class HomeComponent implements OnInit {
       },
       () => {
         this.isLoading = false;
-        this.router.navigate(['/dashboard', this.name]);
+        this.router.navigate(['/dashboard', name]);
       }
 
     );
+  }
+
+  getSummonerSaved(key): void{
+      const sum = localStorage.getItem(key);
+      this.riot.summoner = JSON.parse(sum);
+      this.riot.region = 'euw1';
+      this.router.navigate(['/dashboard', key]);
+  }
+
+  getLocalstorage(): string[]{
+     return Object.keys(localStorage);
   }
 
   ngOnInit(): void {
