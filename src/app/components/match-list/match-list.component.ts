@@ -144,7 +144,7 @@ export class MatchListComponent implements OnInit {
    * The method initially takes the match list, and push in an Observable array details of every match
    * (match list and match details are 2 different endpoints).
    * After Forkjoin the Observable array, the method calls another forkjoin for the various assets and static data.
-   * The various call are nested because every async call is dependent on the previous one.
+   * The various calls are nested because every async call is dependent on the previous one.
    */
   getApi(pageStart, pageEnd): void{
     this.isLoading = true;
@@ -170,7 +170,6 @@ export class MatchListComponent implements OnInit {
           },
           err => {
             console.error(err);
-            this.isLoading = false;
             this.dialog.open(DialogComponent, {
               data: err
           });
@@ -189,7 +188,6 @@ export class MatchListComponent implements OnInit {
               },
               err => {
                 console.error(err);
-                this.isLoading = false;
                 this.dialog.open(DialogComponent, {
                   data: err
               });
