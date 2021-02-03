@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RiotapiService } from '../../services/riotapi.service';
 import { DatadragonService } from '../../services/datadragon.service';
-import {PageEvent} from '@angular/material/paginator';
 import { take } from 'rxjs/operators';
 import { Matches, Summoner, Spell, Queue, Runes } from '../../models/summoner';
 import { Match } from '../../models/match-details';
@@ -44,11 +43,6 @@ export class MatchListComponent implements OnInit {
 
   // gamemode values
   queues: Queue[];
-
-  // Mat paginator inputs
-  lenght = 100;
-  pageSize = 25;
-  pageEvent: PageEvent;
 
   // Get partecipant id of a match
   getPartecipant(index): number{
@@ -140,16 +134,6 @@ export class MatchListComponent implements OnInit {
         return str;
       }
     }
-  }
-
-  // Get the matchList based on selected page index, showing 25 results
-  getPage(page: PageEvent): void{
-    const pages = [];
-    const pageEnd = page.pageSize * (page.pageIndex + 1);
-    pages.push(pageEnd - page.pageSize);
-    pages.push(pageEnd);
-    console.log(pages[0].toString());
-    this.getApi(pages[0].toString(), pages[1].toString());
   }
 
   /**

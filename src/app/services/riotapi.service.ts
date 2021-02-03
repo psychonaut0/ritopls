@@ -29,7 +29,7 @@ export class RiotapiService {
    * http requests.
    */
 
-  private apiKey = 'RGAPI-7f2655c9-6f6b-4023-ba4b-6be698e698f6'; // Paste your API key here
+  private apiKey = ''; // Paste your API key here
   private urlHeader = 'https://'; // Disable web security or add https://cors-anywhere.herokuapp.com/ before 'https://'
   private urlCore = '.api.riotgames.com/';
   private params = new HttpParams().set('api_key', this.apiKey);
