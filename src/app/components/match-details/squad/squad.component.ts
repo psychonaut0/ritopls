@@ -12,11 +12,13 @@ export class SquadComponent implements OnInit {
 
   constructor(private ddragon: DatadragonService) { }
 
+  // Input from parent components
   @Input() part: Participant[];
   @Input() partId: ParticipantIdentity[];
   @Input() summonerSpell: Spell[];
   @Input() runes: Runes[];
 
+  // Calculate KDA (rate per death of kills and assists)
   getKda(k , d, a): number{
     if (d === 0){
       return k + a;
@@ -26,6 +28,7 @@ export class SquadComponent implements OnInit {
     }
   }
 
+  // Calculate kill partecipation
   getKp(k, a): number{
     let sum = 0;
     const x = k + a;
@@ -35,6 +38,7 @@ export class SquadComponent implements OnInit {
     return x / sum;
   }
 
+  // Calculate damage percent compared to total squad damage
   getDamage(dmg): number{
     let sum = 0;
     for (const p of this.part) {
@@ -46,10 +50,12 @@ export class SquadComponent implements OnInit {
     return Math.floor(sum);
   }
 
+  // Get champion asset from id
   getAvatarImg(id: number): string{
     return this.ddragon.getChampionAvatarById(id);
   }
 
+  // Get item asset from id
   getItemImg(id: number): string{
     if (id === 0){
       return '';
@@ -57,6 +63,7 @@ export class SquadComponent implements OnInit {
     return this.ddragon.getItemImage(id, this.ddragon.version);
   }
 
+  // Get rune assets from id
   getRunesImg(perkvar: number): string{
     for (const rune of this.runes){
       if (perkvar === rune.id) {
@@ -72,6 +79,7 @@ export class SquadComponent implements OnInit {
     }
   }
 
+  // Get spell assets from id
   getSpellImg(spellId: number): string{
     for (const spell of this.summonerSpell) {
       if (spell.id === spellId) {

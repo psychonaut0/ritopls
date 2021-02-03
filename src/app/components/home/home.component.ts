@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RiotapiService } from '../../services/riotapi.service';
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import {Router} from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,18 +12,28 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class HomeComponent implements OnInit {
 
-
+ /**
+  * Homepage component. It only has the search form for initial search.
+  * You can also search from the saved summoner menu that shows all the localStorage entries
+  */
 
   constructor(private riot: RiotapiService,
               private router: Router,
               private dialog: MatDialog) { }
 
+  // Default region
   selected = 'euw1';
+
+  // Form data
   name: string;
   region = 'euw1';
-  isLoading = false;
-  storage;
 
+  // Logic data for angular
+  isLoading = false;
+
+  /**
+   * Get player ids and level from input name and region
+   */
   getSummoner(name, region): void{
     this.isLoading = true;
     this.riot.getSummonerByName(name, region).pipe(take(1), ).subscribe(
@@ -46,6 +55,9 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  /**
+   * Get player ids and level from localStorage
+   */
   getSummonerSaved(key): void{
       const sum = localStorage.getItem(key);
       this.riot.summoner = JSON.parse(sum);
@@ -53,6 +65,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/dashboard', key]);
   }
 
+  // Get localStorage entries
   getLocalstorage(): string[]{
      return Object.keys(localStorage);
   }
@@ -60,6 +73,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // ParticleJS (Animated background in the homepage) settings
   // tslint:disable-next-line: member-ordering
   particlesOptions = {
     background: {

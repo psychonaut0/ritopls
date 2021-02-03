@@ -20,6 +20,7 @@ export class MatchDetailsComponent implements OnInit {
   part: Participant[];
   partId: ParticipantIdentity[];
 
+  // Get all the player stats of a match
   getTeamParticipant(id: number): Participant[]{
     const part: Participant[] = [];
     for (const p of this.match.participants) {
@@ -30,6 +31,7 @@ export class MatchDetailsComponent implements OnInit {
     return part;
   }
 
+  // Get all the player identities of a match
   getTeamId(id): ParticipantIdentity[]{
     const part: ParticipantIdentity[] = [];
     for (let i = 0; i < this.match.participants.length; i++) {

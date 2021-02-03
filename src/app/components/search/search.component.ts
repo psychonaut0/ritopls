@@ -1,5 +1,4 @@
 import {  Component, OnInit } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
@@ -13,12 +12,17 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class SearchComponent implements OnInit {
 
-  name: string;
-  region: string;
+  /**
+   * Searchbar component. It's child of dashboard.
+   * It works exactly as the home component.
+   */
 
   constructor(public riot: RiotapiService,
               private router: Router,
               private dialog: MatDialog) { }
+
+  name: string;
+  region: string;
 
   getSummoner(): void{
     this.riot.getSummonerByName(this.name, this.region).pipe(take(1), ).subscribe(
