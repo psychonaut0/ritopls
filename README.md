@@ -19,9 +19,7 @@ To have more information about angular basic commands, [read here](#angular-base
 
 If you don't know what player to search you can go with these example:
 
-Psychonaut0, EUW
-Lyrae051, EUW
-BULKMollic1, EUW
+`Psychonaut0, EUW` | `Lyrae051, EUW` | `BULKMollic1, EUW`
 
 The search is not case sensitive, so you don't need to uppercase or lowercase.
 
