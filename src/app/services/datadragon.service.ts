@@ -18,10 +18,10 @@ export class DatadragonService {
    */
 
   // header root for data dragon
-  private ddUrl = 'http://ddragon.leagueoflegends.com/cdn/';
+  private ddUrl = 'https://ddragon.leagueoflegends.com/cdn/';
 
   // header root for community dragon
-  private cdUrl = 'http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/';
+  private cdUrl = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/';
 
   // global version variable used in various component to share the version
   version: string;
@@ -86,7 +86,7 @@ export class DatadragonService {
 
   // Return a JSON observable containing all the queues of the game (game modes. Ex. Normal game, ranked game etc.)
   getQueue(): Observable<Queue[]>{
-    const url = 'http://static.developer.riotgames.com/docs/lol/queues.json';
+    const url = 'https://static.developer.riotgames.com/docs/lol/queues.json';
     return this.http.get<Queue[]>(url);
   }
 

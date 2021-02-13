@@ -1,4 +1,4 @@
-# Taric
+# [Taric](https://taric-gg.firebaseapp.com/home)
 
 Get stats and detailed match history of your league of legends games with Taric!
 
