@@ -135,7 +135,6 @@ export class DashboardComponent implements OnInit {
     const id = sum.name;
     localStorage.setItem(id, JSON.stringify(sum));
     this.checked = true;
-    console.log(this.checked);
   }
 
   // Delete user from localStorage
@@ -160,7 +159,6 @@ export class DashboardComponent implements OnInit {
    * Called in ngOnInit()
    */
   getApi(region, summoner): void{
-    console.log(region + summoner);
     this.isLoading = true;
     this.region = region;
     this.summoner = summoner;
@@ -179,7 +177,6 @@ export class DashboardComponent implements OnInit {
     this.riot.getLeague(this.summoner.id, this.region) .pipe(take(1), ).subscribe( // Get league infos
           data => {
             this.league = data;
-            console.log(data);
           },
           err => {
           this.isLoading = false;

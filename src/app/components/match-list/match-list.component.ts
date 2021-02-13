@@ -150,14 +150,12 @@ export class MatchListComponent implements OnInit {
     this.isLoading = true;
     this.riot.getMatchList(this.summoner.accountId, this.region, pageStart, pageEnd, '').pipe(take(1), ).subscribe(// get the match list
       data => {
-        console.log(data);
         this.matchList = data;
         for (const match of this.matchList.matches) {
           this.matchObs.push(this.riot.getMatch(match.gameId, this.region)); // Push every observable in a local array
         }
       },
       err => {
-        console.error(err);
         this.dialog.open(DialogComponent, {
           data: err
       });
@@ -166,10 +164,8 @@ export class MatchListComponent implements OnInit {
         forkJoin(this.matchObs).pipe(take(1), ).subscribe( // Forkjoin the array
           res => {
             this.match = res;
-            console.log(res);
           },
           err => {
-            console.error(err);
             this.dialog.open(DialogComponent, {
               data: err
           });
@@ -184,10 +180,8 @@ export class MatchListComponent implements OnInit {
                 this.summonerSpell = data.summonerSpell;
                 this.queues = data.queues;
                 this.runes = data.runes;
-                console.log(data);
               },
               err => {
-                console.error(err);
                 this.dialog.open(DialogComponent, {
                   data: err
               });
