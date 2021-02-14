@@ -29,9 +29,10 @@ export class RiotapiService {
    * http requests.
    */
 
-  private apiKey = ''; // Paste your API key here
+  private apiKey = 'RGAPI-82fa9cf5-a303-4ed2-abe0-49cfed3bbee3'; // Paste your API key here
 
-  // Little proxy added for CORS before 'https://'
+  // https://thawing-savannah-71764.herokuapp.com/ added for CORS before 'https://', you can remove it if you use
+  // chrome without web security
   private urlHeader = 'https://thawing-savannah-71764.herokuapp.com/https://';
   private urlCore = '.api.riotgames.com/';
   private params = new HttpParams().set('api_key', this.apiKey);

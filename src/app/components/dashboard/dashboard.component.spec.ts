@@ -5,13 +5,25 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { RiotapiService } from '../../services/riotapi.service';
 import { DatadragonService } from '../../services/datadragon.service';
 import { DashboardComponent } from './dashboard.component';
-import { DebugElement } from '@angular/core';
 import { of } from 'rxjs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { NgParticlesModule } from 'ng-particles';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let mockService: any;
+  let mockService2: any;
 
 
   beforeEach(async () => {
@@ -44,12 +56,40 @@ describe('DashboardComponent', () => {
         }
     ])
     };
+    mockService2 = {
+      getVersion: () => of(['11.1']),
+      getChampionAvatarById: () => '',
+      getIcon: () => '',
+      getSummonerSpell: () => of(''),
+      getRunes: () => of(''),
+      getSummonerSpellImage: () => '',
+      getItemImage: () => '',
+      getRunesImage: () => '',
+      getQueue: () => '',
+      getBorder: () => '',
+      getRankedCrest: () => '',
+    };
     await TestBed.configureTestingModule({
       declarations: [ DashboardComponent,
                       DialogComponent ],
       imports: [HttpClientModule,
-                MatDialogModule],
-      providers: [{ provide: RiotapiService, useValue: mockService }]
+                MatDialogModule,
+                MatFormFieldModule,
+                MatIconModule,
+                MatInputModule,
+                MatSelectModule,
+                MatButtonModule,
+                NgParticlesModule,
+                HttpClientModule,
+                MatProgressSpinnerModule,
+                MatProgressBarModule,
+                MatDividerModule,
+                MatExpansionModule,
+                MatPaginatorModule,
+                MatDialogModule,
+                MatMenuModule],
+      providers: [{ provide: RiotapiService, useValue: mockService },
+                  { provide: DatadragonService, useValue: mockService2}]
     })
     .compileComponents();
   });
